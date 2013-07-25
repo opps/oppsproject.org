@@ -1,2 +1,2 @@
 #!/bin/bash
-for REPO in "`ls /home/opps/mirror/*`"; do (cd "$REPO"; git pull); done;
+find /home/opps/mirror/ -type d -name .git | xargs -n 1 dirname | sort | while read line; do echo $line && cd $line && git pull; done
